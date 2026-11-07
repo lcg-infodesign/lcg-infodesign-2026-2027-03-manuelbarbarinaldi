@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sketch</title>
+    <title>Cento Fiumi</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -12,7 +12,69 @@
     <script src="libraries/p5.sound.min.js"></script>
   </head>
 
-  <body>
+   <body>
+    <!-- Fascia laterale sinistra: titolo e legenda -->
+    <aside id="legenda">
+      <h1>Cento fiumi del mondo</h1>
+      <p class="intro">
+        Ogni glifo è un fiume. Passa il mouse su un glifo per leggerne i dati.
+        I fiumi sono divisi per continente e ordinati come nel dataset.
+      </p>
+ 
+      <h2>Come leggere un glifo</h2>
+ 
+      <div class="voce">
+        <h3>Disco: portata media</h3>
+        <p>Più il disco è grande, più acqua porta il fiume (m³/s).</p>
+        <svg width="190" height="40" viewBox="0 0 190 40">
+          <circle cx="18" cy="20" r="6" fill="#777" />
+          <circle cx="65" cy="20" r="10.5" fill="#777" />
+          <circle cx="125" cy="20" r="15" fill="#777" />
+          <text x="18" y="38" font-size="9" text-anchor="middle">100</text>
+          <text x="65" y="38" font-size="9" text-anchor="middle">3.000</text>
+          <text x="125" y="38" font-size="9" text-anchor="middle">100.000</text>
+        </svg>
+      </div>
+ 
+      <div class="voce">
+        <h3>Colore: temperatura media</h3>
+        <div class="barra-colore"></div>
+        <div class="estremi"><span>-10 °C</span><span>30 °C</span></div>
+      </div>
+ 
+      <div class="voce">
+        <h3>Raggi lunghi: lunghezza</h3>
+        <p>Più i raggi sono lunghi, più il fiume è lungo (da 74 a 6.650 km).</p>
+      </div>
+ 
+      <div class="voce">
+        <h3>Numero di raggi: affluenti</h3>
+         <p>
+        Gli affluenti sono molto diversi tra i fiumi: la maggior parte ne ha
+        poche decine, pochissimi ne hanno più di mille. Con una scala lineare
+        quasi tutti i glifi avrebbero 3 o 4 raggi e non si distinguerebbero.
+      </p>
+      <p>
+        Il logaritmo comprime i valori grandi: ogni volta che gli affluenti
+        si moltiplicano per 10, i raggi aumentano sempre della stessa quantità.
+        Lo stesso vale per la portata del disco.
+      </p>
+      </div>
+ 
+      <table>
+        <tr><th>Affluenti</th><th>Raggi (log)</th><th>Raggi (lineare)</th></tr>
+        <tr><td>2</td><td>5</td><td>3</td></tr>
+        <tr><td>10</td><td>9</td><td>3</td></tr>
+        <tr><td>50</td><td>12</td><td>4</td></tr>
+        <tr><td>100</td><td>14</td><td>5</td></tr>
+        <tr><td>500</td><td>18</td><td>11</td></tr>
+        <tr><td>1.100</td><td>20</td><td>20</td></tr>
+      </table>
+    </aside>
+ 
+    <!-- Parte destra: qui p5.js inserisce il canvas con i glifi -->
+    <main id="area-glifi"></main>
+ 
     <script src="sketch.js"></script>
   </body>
 </html>
